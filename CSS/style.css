@@ -1,3 +1,87 @@
+body{
+	margin:  0px;
+	background-color: rgb(89,104,177);
+	
+}
+ul{
+	
+	justify-content: center;
+	list-style: none;
+	width: 100%;
+}
+.li_game{
+	color: white;
+	margin: 0 10px;
+}
+
+
+.nav1{
+	width: 100%;
+	margin: 0px;
+	background-color: rgb(64, 80, 156);
+}
+.option{
+	position: relative;
+	float: left;
+	margin:  0 5px;
+	left :-19px;
+}
+.deroulantProfil{
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 100px;
+	transition: 1s;
+}
+.deroulantPS{
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 100px;
+	transition: 1s;
+}
+
+.deroulantXBOX {
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 50px;
+	transition: 1s;
+}
+.deroulantNINTENDO {
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 80px;
+	transition: 1s;
+}
+.listeonglet{
+	display: flex;
+	justify-content: center;
+}
+.listeoption{
+	display:  inline-flex;
+	flex-direction: column;
+}
+.onglet{
+	margin: 0 100px;
+	font-weight: bold;
+	font-size: 25px;
+}
+
 #title{
 	color: red;
+}
+.testdiv{
+	width: 100%;
+	height: 50px;
+	background-color: red;
 }
