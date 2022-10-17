@@ -8,17 +8,12 @@
 	<meta charset="utf-8">
 	<title>MyGamesDB</title>
 	<link href="../CSS/style.css" rel="stylesheet">
+	<link href="../CSS/menu.css" rel="stylesheet">
 	<link href="../CSS/header.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	
 </head>
 
 <body>
-	<ul>
-		<li>Mon profil</li>
-		<li>Ma collection</li>
-		<li>Se deconnecter</li>
-	</ul>
 	<header>
 		<div class="header_bar">
 			<a href="index.php"><img class="header_logo" src="../Logo/M.png" alt="Logo"></a>
@@ -32,13 +27,20 @@
 				<?php
 					if(isset($_SESSION['isconnected'])){
 						if($_SESSION['isconnected']){
-							echo("<p> Salut <span class=\"pseudoconnected\">".$_SESSION['pseudo']. "</span> </p>
-									<ul class=\"listeonglet\">
+							echo("<ul class=\"listeconsole\">
+									<li class=\"li_profil\">
+										<div class=\"ongletPROFIL\">
+											".$_SESSION['pseudo']."
+										</div>
+								<div class=\"deroulantPROFIL\">
+									<ul class=\"listeoptionPROFIL\">
 										<li class=\"option\">Mon profil</li>
 										<li class=\"option\">Ma collection</li>
-										<li class=\"option\">Se déconecter</li>
-									</ul>
-								</div>");
+										<li class=\"option\">Se deconnecter</li>
+					</ul>
+				</div>
+			</li>
+		</ul>");
 							//unset($_SESSION['isconnected']);
 						}
 					} else {
@@ -53,9 +55,9 @@
 		
 	</header>
 	<nav class="nav1">
-		<ul class="listeonglet">
-			<li class="li_game">
-				<div class="onglet">
+		<ul class="listeconsole">
+			<li class="li_console">
+				<div class="ongletPS">
 					PlayStation
 				</div>
 				<div class="deroulantPS">
@@ -64,12 +66,12 @@
 						<li class="option">PS2</li>
 						<li class="option">PS3</li>
 						<li class="option">PS4</li>
-						<li class="option">PS5</li>	
+						<li class="option">PS5</li>
 					</ul>
 				</div>
 			</li>
-			<li class="li_game">
-				<div class="onglet">
+			<li class="li_console">
+				<div class="ongletXBOX">
 					Xbox
 				</div>
 				<div class="deroulantXBOX">
@@ -81,27 +83,37 @@
 					</ul>
 				</div>
 			</li>
-			<li class="li_game">
-				<div class="onglet">
+			<li class="li_console">
+				<div class="ongletNINTENDO">
 					Nintendo
 				</div>
 				<div class="deroulantNINTENDO">
 					<ul class="listeoption">
-						<li class="option">DS</li>
+						<a href="list_game.php?type=DS"><li class="option">DS</li></a>
 						<li class="option">3DS</li>
 						<li class="option">Wii</li>
 						<li class="option">Wii U</li>
-						<li class="option">Switch</li>	
+						<li class="option">Switch</li>
 					</ul>
 				</div>
 			</li>
 		</ul>
 	</nav>
-	<script src="../JS/menu.js"></script>
-	<!--<div class="testdiv"></div>-->
-	<h1 id="title">HELLO</h1>
-	<h1 id="title">HELLO</h1>
-	<p>Ma premiere utilisation de Git/GitHub</p>
+	<script src="../JS/menu.js"></script>	
+	<div>
+		<?php 
+			$bdd = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
+			$request = $bdd->prepare("SELECT * FROM jeu");
+			$request->execute();
+			while($info = $request->fetch()){
+				echo("
+				<p>".$info['nom']."</p>
+				<img src=\"../image/DS/".$info['img']."\"/>
+			");
+			}
+			
+		?>
+	</div>
 </body>
 
 

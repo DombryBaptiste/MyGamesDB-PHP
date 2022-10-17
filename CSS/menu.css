@@ -1,0 +1,71 @@
+.nav1{
+	width: 100%;
+	margin: 0px;
+	background-color: rgb(64, 80, 156);
+
+}
+
+.listeconsole{
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	padding: 0px;
+}
+
+.li_console{
+	color: white;
+	margin: 0 10px;
+}
+
+.deroulantPS{
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 100px;
+}
+
+.deroulantXBOX {
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 50px;
+}
+
+.deroulantNINTENDO {
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 80px;
+}
+.deroulantPROFIL {
+	background-color: rgb(36, 49, 115);
+	height: 0px;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	margin-left: 80px;
+}
+
+.listeoption, .listeoptionPROFIL{
+	display:  inline-flex;
+	flex-direction: column;
+}
+
+.option{
+	position: relative;
+	float: left;
+	margin:  0 5px;
+	left :-19px;
+}
+
+.ongletPS, .ongletXBOX, .ongletNINTENDO, .ongletPROFIL{
+	margin: 0 100px;
+	font-weight: bold;
+	font-size: 25px;
+}
