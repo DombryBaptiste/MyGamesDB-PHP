@@ -69,3 +69,13 @@
 	font-weight: bold;
 	font-size: 25px;
 }
+
+.link_console:link{
+	color: white;
+	text-decoration: none;
+}
+
+.link_console:visited{
+	color:white;
+	text-decoration: none;
+}

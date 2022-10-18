@@ -32,24 +32,23 @@
 										<div class=\"ongletPROFIL\">
 											".$_SESSION['pseudo']."
 										</div>
-								<div class=\"deroulantPROFIL\">
-									<ul class=\"listeoptionPROFIL\">
-										<li class=\"option\">Mon profil</li>
-										<li class=\"option\">Ma collection</li>
-										<li class=\"option\">Se deconnecter</li>
-					</ul>
-				</div>
-			</li>
-		</ul>");
-							//unset($_SESSION['isconnected']);
+										<div class=\"deroulantPROFIL\">
+											<ul class=\"listeoptionPROFIL\">
+												<a href=\"profil_user.php\" class=\"link_profil\"><li class=\"option\">Mon profil</li></a>
+												<a href=\"collection_user.php\" class=\"link_profil\"><li class=\"option\">Ma collection</li></a>
+												<a href=\"deconnexion_user.php\" class=\"link_profil\"><li class=\"option\">Se deconnecter</li></a>
+											</ul>
+										</div>
+									</li>
+								</ul>");
+			
 						}
 					} else {
-						echo("	<a class=\"link_con_ins\" href=\"connexion.php\">Connexion</a>
+						echo("<a class=\"link_con_ins\" href=\"connexion.php\">Connexion</a>
 								<span>|</span>
 								<a class=\"link_con_ins\" href=\"inscription.php\">Inscription</a>");
 					}
 				?>
-				
 			</div>
 		</div>
 		
@@ -62,11 +61,11 @@
 				</div>
 				<div class="deroulantPS">
 					<ul class="listeoption">
-						<li class="option">PS1</li>
-						<li class="option">PS2</li>
-						<li class="option">PS3</li>
-						<li class="option">PS4</li>
-						<li class="option">PS5</li>
+						<a class="link_console" href="list_game.php?type=PS1"><li class="option">PS1</li></a>
+						<a class="link_console" href="list_game.php?type=PS2"><li class="option">PS2</li></a>
+						<a class="link_console" href="list_game.php?type=PS3"><li class="option">PS3</li></a>
+						<a class="link_console" href="list_game.php?type=PS4"><li class="option">PS4</li></a>
+						<a class="link_console" href="list_game.php?type=PS5"><li class="option">PS5</li></a>
 					</ul>
 				</div>
 			</li>
@@ -76,10 +75,10 @@
 				</div>
 				<div class="deroulantXBOX">
 					<ul class="listeoption">
-						<li class="option">Xbox</li>
-						<li class="option">Xbox 360</li>
-						<li class="option">Xbox One</li>
-						<li class="option">Xbox Series X</li>
+						<a class="link_console" href="list_game.php?type=Xbox"><li class="option">Xbox</li></a>
+						<a class="link_console" href="list_game.php?type=Xbox360"><li class="option">Xbox 360</li></a>
+						<a class="link_console" href="list_game.php?type=XboxOne"><li class="option">Xbox One</li></a>
+						<a class="link_console" href="list_game.php?type=XboxSeriesX"><li class="option">Xbox Series X</li></a>
 					</ul>
 				</div>
 			</li>
@@ -89,11 +88,11 @@
 				</div>
 				<div class="deroulantNINTENDO">
 					<ul class="listeoption">
-						<a href="list_game.php?type=DS"><li class="option">DS</li></a>
-						<li class="option">3DS</li>
-						<li class="option">Wii</li>
-						<li class="option">Wii U</li>
-						<li class="option">Switch</li>
+						<a class="link_console" href="list_game.php?type=DS"><li class="option">DS</li></a>
+						<a class="link_console" href="list_game.php?type=3DS"><li class="option">3DS</li></a>
+						<a class="link_console" href="list_game.php?type=Wii"><li class="option">Wii</li></a>
+						<a class="link_console" href="list_game.php?type=WiiU"><li class="option">Wii U</li></a>
+						<a class="link_console" href="list_game.php?type=Switch"><li class="option">Switch</li></a>
 					</ul>
 				</div>
 			</li>
@@ -114,6 +113,9 @@
 			
 		?>
 	</div>
+	<footer>
+		
+	</footer>
 </body>
 
 

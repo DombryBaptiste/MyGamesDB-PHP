@@ -1,0 +1,36 @@
+h1{
+	margin-top: 0;
+	color: white;
+	font: bold;
+}
+
+label{
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+}
+input[type = email], input[type = password], input[type = text]{
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+}
+input[type = submit]{
+	width: 100px;
+	height: 30px;
+
+
+}
+
+.form_connect{
+	border: solid;
+	color:  white;
+	padding: 10px 10px;
+	text-align: center;
+}
+.all_form{
+	width: 100%;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

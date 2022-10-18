@@ -70,3 +70,13 @@
 	margin-left: -40px;
 	margin-top: -20px;
 }
+
+.link_profil:link{
+	color: white;
+	text-decoration: none;
+}
+
+.link_profil:visited{
+	color:white;
+	text-decoration: none;
+}

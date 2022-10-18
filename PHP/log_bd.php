@@ -4,5 +4,5 @@
 	$host = "localhost";
 	$user = "root";
 	$password = "";
-	$database = "espace_memebre"
+	$database = "espace_membre"
 	?>
