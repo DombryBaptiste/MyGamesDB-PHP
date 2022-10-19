@@ -141,8 +141,9 @@
 		</div>
 	</div>
 	<?php
-		if(isset($erreur)){
-			echo '<font color="red">'.($erreur).'</font>';
+		if(isset($_SESSION['erreur_connexion'])){
+			echo ("<p class=\"error_message\">".($_SESSION['erreur_connexion']).'</p>');
+			unset($_SESSION['erreur_connexion']);
 		}
 	?>
 	<footer>

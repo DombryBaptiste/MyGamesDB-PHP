@@ -27,46 +27,42 @@ if(isset($_POST['forminscription'])){
 								$requser = $bdd->prepare("SELECT * FROM membres WHERE email = ?");
 								$requser->execute(array($email));
 								$userinfo = $requser->fetch();
-								$requete2 = "CREATE TABLE game_".$userinfo['id']."membre (id INT)";
+								$requete2 = "CREATE TABLE game_".$userinfo['id']."membre (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, id_game INT, add_date DATE)";
 								$r2 = $bdd->query($requete2);
 								if($r2){
-									$erreur = "Votre compte a été créer";
-									header("Location: ../HTML/index.php");
+									$_SESSION['erreur_inscription'] = "Votre compte a été créer";
+									header("Location: ../HTML/inscription.php");
 								}
 								
 							} else{
 								echo $bdd->errorInfo()[2];
+								header("Location: ../HTML/inscription.php");
 							}
 						
 							
 						} else {
-							$erreur = "Vos mdp sont différents";
+							$_SESSION['erreur_inscription'] = "Vos mdp sont différents";
+							header("Location: ../HTML/inscription.php");
 						}
 					} else {
-							$erreur = "Mail deja entrée";
+							$_SESSION['erreur_inscription']  = "Mail deja entrée";
+							header("Location: ../HTML/inscription.php");
 						}
 				} else {
-					$erreur = "Votre email ne fonctionne pas";
+					$_SESSION['erreur_inscription']  = "Votre email ne fonctionne pas";
+					header("Location: ../HTML/inscription.php");
 				}
 			} else {
-				$erreur = "Vos email sont différents";
+				$_SESSION['erreur_inscription']  = "Vos email sont différents";
+				header("Location: ../HTML/inscription.php");
 			}
 		} else {
-			$erreur = "Votre pseudo fait plus de 255 caractères";
+			$_SESSION['erreur_inscription']  = "Votre pseudo fait plus de 255 caractères";
+			header("Location: ../HTML/inscription.php");
 		}
 	} else {
-		$erreur = "tout les champs doivent etre compléter";
+		$_SESSION['erreur_inscription']  = "Tous les champs doivent etre compléter";
+		header("Location: ../HTML/inscription.php");
 	}
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head>
-<body>
-<?php echo($erreur) ?>
-</body>
-</html>

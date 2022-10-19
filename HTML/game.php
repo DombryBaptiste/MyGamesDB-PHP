@@ -1,18 +1,29 @@
-<?php
+<?php 
 	require_once("../PHP/log_bd.php");
+	$bdd = new PDO('mysql:host='.$host.';dbname='.$database.'',$user , $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+	$requete = $bdd->prepare("SELECT * FROM jeu WHERE id = ?");
+	$requete->execute(array($_GET['id']));
+	$infogame = $requete->fetch();
+	/*echo("
+		<p>".$infogame['id']."</p>
+		<p>".$infogame['nom']."</p>
+	");*/
+
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
 	<meta charset="utf-8">
-	<title>MyGamesDB</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><?php echo($infogame['nom'])?></title>
 	<link href="../CSS/style.css" rel="stylesheet">
 	<link href="../CSS/menu.css" rel="stylesheet">
 	<link href="../CSS/header.css" rel="stylesheet">
+	<link href="../CSS/game.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="../circle-progress-master/dist/circle-progress.min.js"></script>
 </head>
-
 <body>
 	<header>
 		<div class="header_bar">
@@ -98,33 +109,38 @@
 			</li>
 		</ul>
 	</nav>
-	<script src="../JS/menu.js"></script>	
-	<!--<div class="list_game_bdd">
-		<div class="picture"><img src="../image/DS/Pokemon_Diamant.png" class="pic"></div>
-		<div class="picture"><img src="../image/DS/Pokemon_Or_HeartGold.png" class="pic"></div>
-		<div class="picture"><img src="../image/DS/Pokemon_Perle.png" class="pic"></div>
-	</div>-->
-	<div>
-		<?php 
-			$bdd = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
-			$request = $bdd->prepare("SELECT * FROM jeu");
-			$request->execute();
-			while($info = $request->fetch()){
+	<script src="../JS/menu.js"></script>
+	<div class="game">
+		<div class="desc">
+			<img src="../image/<?php echo($infogame['platform']."/".$infogame['img'])?>" class="img_game">
+			<div class="desc_text">
+				<?php 
+				$date = new DateTime($infogame['release_date']);
 				echo("
-					<div class=\"list_game_bdd\">
-						<a href=\"game.php?id=".$info['id']."\"><img src=\"../image/".$info['platform']."/".$info['img']."\"/ class=\"pic\"></a>
-					</div>
+				<h3>".$infogame['nom']."</h3>
+				<p class=\"description\">".$infogame['description']."</p>
+				<p>Platforme : ".$infogame['platform']."</p>
+				<p>Date de sortie en france : ".$date->format('d/m/Y')." </p>
+				
 				");
-			}
-			
-		?>
+				?>
+					<a href="../PHP/add_game.php?id=<?php echo($infogame['id'])?>"><button class="add_game" type="submit" value="Ajouter">Ajouter</button></a>
+				
+				
+			</div>
+		</div>
+		<div class="video">
+			<iframe width="560" height="315" src="<?php echo($infogame['trailer'])?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<?php
+			if(isset($_SESSION['isconnected'])){
+				if($_SESSION['isconnected']){
+			 		echo("<div class=\"progressbar-wrapper\">
+      					<div class=\"progressbar\">100%</div>
+     					</div>");
+			 	}
+			 }
+     		?>
 	</div>
 
-	<footer>
-		
-	</footer>
 </body>
-
-
-
 </html>

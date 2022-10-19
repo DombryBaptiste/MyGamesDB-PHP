@@ -152,8 +152,9 @@
 		</div>
 	</div>
 	<?php
-		if(isset($erreur)){
-			echo '<font color="red">'.($erreur).'</font>';
+		if(isset($_SESSION['erreur_inscription'])){
+			echo ("<p class=\"error_message\">".($_SESSION['erreur_inscription']).'</p>');
+			unset($_SESSION['erreur_inscription']);
 		}
 	?>
 	<footer>

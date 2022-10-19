@@ -34,3 +34,9 @@ input[type = submit]{
 	justify-content: center;
 	align-items: center;
 }
+
+.error_message{
+	font-size: 20px;
+	color: white;
+	margin-left: 40px;
+}
