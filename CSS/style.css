@@ -16,10 +16,41 @@ footer{
 	background-color: rgb(64, 80, 156);
 }
 .list_game_bdd{
-	display: inline-flex;
+	
 }
 .pic{
 	height: 150px;
 	width: 150px;
-	margin: 0 10px
+	margin: 5px 10px
+}
+.last_game_added{
+	width: 54%;
+	margin-left: 40px;
+}
+
+.text{
+	color: white;
+	font-size: 40px;
+	text-align: center;
+}
+
+.all_games{
+	border: solid white;
+	border-width: 6px 0px 6px 0px;
+	display: inline-flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+.first_letter_game{
+	color: white;
+	font-weight: bold;
+	font-size: 40px;
+	font-family: monospace;
+	text-align: center;
+	vertical-align: middle;
+	margin: 50px 10px;
+}
+.game_by_letter{
+	display: inline-flex;
+	width: 100%;
 }

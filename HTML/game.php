@@ -1,14 +1,24 @@
 <?php 
 	require_once("../PHP/log_bd.php");
-	$bdd = new PDO('mysql:host='.$host.';dbname='.$database.'',$user , $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+	require_once("../PHP/case_connexion.php");
+	require_once("../PHP/affiche_game.php");
+	/*$bdd = new PDO('mysql:host='.$host.';dbname='.$database.'',$user , $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 	$requete = $bdd->prepare("SELECT * FROM jeu WHERE id = ?");
 	$requete->execute(array($_GET['id']));
 	$infogame = $requete->fetch();
-	/*echo("
-		<p>".$infogame['id']."</p>
-		<p>".$infogame['nom']."</p>
-	");*/
-
+	if(isset($_SESSION['isconnected'])){
+		if($_SESSION['isconnected']){
+			$requete2 = $bdd->prepare("SELECT * FROM game_".$_SESSION['id']."membre WHERE id_game = ?");
+			$requete3 = $bdd->query("SELECT * FROM jeu");
+			$requete4 = $bdd->query("SELECT * FROM game_".$_SESSION['id']."membre");
+			$requete->execute(array($_GET['id']));
+			$requete2->execute(array($_GET['id']));
+			$infogame = $requete->fetch();
+			$row = $requete2->rowCount();
+			$nbGameBDD = $requete3->rowCount();
+			$nbGameUser = $requete4->rowCount();
+		}
+	}*/
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +26,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php echo($infogame['nom'])?></title>
+	<title><?php title_game($_GET['id']); ?></title>
 	<link href="../CSS/style.css" rel="stylesheet">
 	<link href="../CSS/menu.css" rel="stylesheet">
 	<link href="../CSS/header.css" rel="stylesheet">
@@ -36,33 +46,10 @@
 			</div>
 			<div class="connexion">
 				<?php
-					if(isset($_SESSION['isconnected'])){
-						if($_SESSION['isconnected']){
-							echo("<ul class=\"listeconsole\">
-									<li class=\"li_profil\">
-										<div class=\"ongletPROFIL\">
-											".$_SESSION['pseudo']."
-										</div>
-										<div class=\"deroulantPROFIL\">
-											<ul class=\"listeoptionPROFIL\">
-												<a href=\"profil_user.php\" class=\"link_profil\"><li class=\"option\">Mon profil</li></a>
-												<a href=\"collection_user.php\" class=\"link_profil\"><li class=\"option\">Ma collection</li></a>
-												<a href=\"deconnexion_user.php\" class=\"link_profil\"><li class=\"option\">Se deconnecter</li></a>
-											</ul>
-										</div>
-									</li>
-								</ul>");
-			
-						}
-					} else {
-						echo("<a class=\"link_con_ins\" href=\"connexion.php\">Connexion</a>
-								<span>|</span>
-								<a class=\"link_con_ins\" href=\"inscription.php\">Inscription</a>");
-					}
+					echo_connexion_inscription();
 				?>
 			</div>
 		</div>
-		
 	</header>
 	<nav class="nav1">
 		<ul class="listeconsole">
@@ -99,7 +86,7 @@
 				</div>
 				<div class="deroulantNINTENDO">
 					<ul class="listeoption">
-						<a class="link_console" href="list_game.php?type=DS"><li class="option">DS</li></a>
+						<a class="link_console" href="list_game.php?type=Nintendo DS"><li class="option">DS</li></a>
 						<a class="link_console" href="list_game.php?type=3DS"><li class="option">3DS</li></a>
 						<a class="link_console" href="list_game.php?type=Wii"><li class="option">Wii</li></a>
 						<a class="link_console" href="list_game.php?type=WiiU"><li class="option">Wii U</li></a>
@@ -112,33 +99,22 @@
 	<script src="../JS/menu.js"></script>
 	<div class="game">
 		<div class="desc">
-			<img src="../image/<?php echo($infogame['platform']."/".$infogame['img'])?>" class="img_game">
+			<img src="<?php image_game($_GET['id'])?>" class="img_game">
 			<div class="desc_text">
 				<?php 
-				$date = new DateTime($infogame['release_date']);
-				echo("
-				<h3>".$infogame['nom']."</h3>
-				<p class=\"description\">".$infogame['description']."</p>
-				<p>Platforme : ".$infogame['platform']."</p>
-				<p>Date de sortie en france : ".$date->format('d/m/Y')." </p>
-				
-				");
+				show_one_game($_GET['id']);
 				?>
-					<a href="../PHP/add_game.php?id=<?php echo($infogame['id'])?>"><button class="add_game" type="submit" value="Ajouter">Ajouter</button></a>
-				
-				
+				<div class="button_info">
+					<?php
+						show_button($_GET['id']);
+					?>
+				</div>	
 			</div>
 		</div>
 		<div class="video">
-			<iframe width="560" height="315" src="<?php echo($infogame['trailer'])?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="<?php show_video($_GET['id']); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<?php
-			if(isset($_SESSION['isconnected'])){
-				if($_SESSION['isconnected']){
-			 		echo("<div class=\"progressbar-wrapper\">
-      					<div class=\"progressbar\">100%</div>
-     					</div>");
-			 	}
-			 }
+				show_progress($_GET['id']);
      		?>
 	</div>
 

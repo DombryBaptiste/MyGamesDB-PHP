@@ -1,7 +1,7 @@
 <?php
 	require_once("../PHP/log_bd.php");
+	require_once("../PHP/case_connexion.php")
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -27,33 +27,10 @@
 			</div>
 			<div class="connexion">
 				<?php
-					if(isset($_SESSION['isconnected'])){
-						if($_SESSION['isconnected']){
-							echo("<ul class=\"listeconsole\">
-									<li class=\"li_profil\">
-										<div class=\"ongletPROFIL\">
-											".$_SESSION['pseudo']."
-										</div>
-										<div class=\"deroulantPROFIL\">
-											<ul class=\"listeoptionPROFIL\">
-												<a href=\"profil_user.php\" class=\"link_profil\"><li class=\"option\">Mon profil</li></a>
-												<a href=\"collection_user.php\" class=\"link_profil\"><li class=\"option\">Ma collection</li></a>
-												<a href=\"deconnexion_user.php\" class=\"link_profil\"><li class=\"option\">Se deconnecter</li></a>
-											</ul>
-										</div>
-									</li>
-								</ul>");
-			
-						}
-					} else {
-						echo("<a class=\"link_con_ins\" href=\"connexion.php\">Connexion</a>
-								<span>|</span>
-								<a class=\"link_con_ins\" href=\"inscription.php\">Inscription</a>");
-					}
+					echo_connexion_inscription();
 				?>
 			</div>
 		</div>
-		
 	</header>
 	<nav class="nav1">
 		<ul class="listeconsole">
@@ -90,7 +67,7 @@
 				</div>
 				<div class="deroulantNINTENDO">
 					<ul class="listeoption">
-						<a class="link_console" href="list_game.php?type=DS"><li class="option">DS</li></a>
+						<a class="link_console" href="list_game.php?type=Nintendo DS"><li class="option">DS</li></a>
 						<a class="link_console" href="list_game.php?type=3DS"><li class="option">3DS</li></a>
 						<a class="link_console" href="list_game.php?type=Wii"><li class="option">Wii</li></a>
 						<a class="link_console" href="list_game.php?type=WiiU"><li class="option">Wii U</li></a>

@@ -3,7 +3,8 @@
 	if(isset($_SESSION['isconnected'])){
 		if($_SESSION['isconnected']){
 			unset($_SESSION['isconnected']);
-			header("Location: index.php");
+			header("Location: ../HTML/index.php");
+			session_destroy();
 		}
 	}
 

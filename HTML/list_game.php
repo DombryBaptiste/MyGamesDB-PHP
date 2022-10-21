@@ -1,5 +1,7 @@
 <?php
 	require_once("../PHP/log_bd.php");
+	require_once("../PHP/case_connexion.php");
+	require_once("../PHP/affiche_game.php");
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +18,7 @@
 	<title></title>
 </head>
 <body>
+	<body>
 	<header>
 		<div class="header_bar">
 			<a href="index.php"><img class="header_logo" src="../Logo/M.png" alt="Logo"></a>
@@ -27,34 +30,10 @@
 			</div>
 			<div class="connexion">
 				<?php
-					if(isset($_SESSION['isconnected'])){
-						if($_SESSION['isconnected']){
-							echo("<ul class=\"listeconsole\">
-									<li class=\"li_profil\">
-										<div class=\"ongletPROFIL\">
-											".$_SESSION['pseudo']."
-										</div>
-								<div class=\"deroulantPROFIL\">
-									<ul class=\"listeoptionPROFIL\">
-										<li class=\"option\">Mon profil</li>
-										<li class=\"option\">Ma collection</li>
-										<li class=\"option\">Se deconnecter</li>
-					</ul>
-				</div>
-			</li>
-		</ul>");
-							//unset($_SESSION['isconnected']);
-						}
-					} else {
-						echo("	<a class=\"link_con_ins\" href=\"connexion.php\">Connexion</a>
-								<span>|</span>
-								<a class=\"link_con_ins\" href=\"inscription.php\">Inscription</a>");
-					}
+					echo_connexion_inscription();
 				?>
-				
 			</div>
 		</div>
-		
 	</header>
 	<nav class="nav1">
 		<ul class="listeconsole">
@@ -91,7 +70,7 @@
 				</div>
 				<div class="deroulantNINTENDO">
 					<ul class="listeoption">
-						<a class="link_console" href="list_game.php?type=DS"><li class="option">DS</li></a>
+						<a class="link_console" href="list_game.php?type=Nintendo DS"><li class="option">DS</li></a>
 						<a class="link_console" href="list_game.php?type=3DS"><li class="option">3DS</li></a>
 						<a class="link_console" href="list_game.php?type=Wii"><li class="option">Wii</li></a>
 						<a class="link_console" href="list_game.php?type=WiiU"><li class="option">Wii U</li></a>
@@ -102,11 +81,11 @@
 		</ul>
 	</nav>
 	<script src="../JS/menu.js"></script>
-<?php 
-	echo($_GET['type']);
-?>
-<footer>
-		
-</footer>
+	<div class="all_games">
+		<?php
+			show_all_game($_GET['type']);
+		?>
+	</div>
+<footer></footer>
 </body>
 </html>
