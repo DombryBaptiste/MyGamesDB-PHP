@@ -8,16 +8,15 @@
 				$bdd = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 				$request = $bdd->prepare("	SELECT *
 											FROM jeu
-											INNER JOIN game_".$_SESSION['id']."membre ON jeu.id = game_20membre.id_game
-											ORDER BY game_20membre.id DESC;
+											INNER JOIN game_".$_SESSION['id']."membre ON jeu.id = game_".$_SESSION['id']."membre.id_game
+											ORDER BY game_".$_SESSION['id']."membre.id DESC
+											LIMIT 18;
 										");
 				$request->execute();
-				$i = 0;
-				while($info = $request->fetch() OR $i == 18){
+				while($info = $request->fetch()) {
 					echo("
 						<a href=\"game.php?id=".$info['id_game']."\"><img src=\"".$info['img']."\"/ class=\"pic\"></a>
 						");
-					$i++;
 				}
 			}
 		}
@@ -48,20 +47,8 @@
 			$pointeur = $tab_letter[$i];
 			echo("</div>");
 		}
-		/*$request = $bdd->prepare("	SELECT *
-									FROM jeu 
-									WHERE platform = ?
-									ORDER BY nom
-								");
-		$request->execute(array($type));
-		while($info = $request->fetch()){
-			echo("
-				<div class=\"list_game_bdd\">
-					<a href=\"game.php?id=".$info['id']."\"><img src=\"".$info['img']."\"/ class=\"pic\"></a>
-				</div>
-				");
-		}*/
 	}
+
 	function bdd_game($id){
 		global $host, $user, $password, $database;
 		$bdd = new PDO('mysql:host='.$host.';dbname='.$database.'',$user , $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));

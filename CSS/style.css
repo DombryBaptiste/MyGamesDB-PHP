@@ -54,3 +54,8 @@ footer{
 	display: inline-flex;
 	width: 100%;
 }
+
+.info_session{
+	text-align: center;
+	color: lightgoldenrodyellow;
+}

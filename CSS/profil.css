@@ -1,0 +1,54 @@
+.account{
+
+}
+.p_account, .p_pseudo, .p_email{
+	border-bottom: solid gray;
+	padding-bottom: 1%;
+	display: flex;
+	margin-left: 1%;
+	margin-right: 1%;
+	justify-content: center;
+	flex-direction: column;
+}
+.p_mdp{
+	display: flex;
+	margin-left: 1%;
+	margin-right: 1%;
+	justify-content: center;
+	flex-direction: column;
+}
+.span_account{
+	color: white;
+	font-family: monospace;
+	font-size: 40px;
+	font-weight: bold;
+	margin-left: 2%;
+}
+
+.span_pseudo_title, .span_email_title, .span_mdp{
+	font-family: monospace;
+	font-size: 15px;
+	margin-left: 2%;
+}
+
+.span_pseudo, .span_email{
+	color: white;
+	font-family: monospace;
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 2%;
+}
+
+.span_pseudo:hover, .span_email:hover{
+	color: red;
+}
+
+.new_pseudo_input{
+	margin-left: 2%;
+	margin-top: 3px
+}
+
+.form_new_pseudo{
+	display: flex;
+	flex-direction: column;
+}

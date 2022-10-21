@@ -1,20 +1,21 @@
 <?php
 	require_once("../PHP/log_bd.php");
-	require_once("../PHP/case_connexion.php");
-	require_once("../PHP/affiche_game.php");
+	require_once("../PHP/case_connexion.php")
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
 	<meta charset="utf-8">
-	<title>MyGamesDB</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="../CSS/style.css" rel="stylesheet">
+	<link href="../CSS/connexion.css" rel="stylesheet">
 	<link href="../CSS/menu.css" rel="stylesheet">
 	<link href="../CSS/header.css" rel="stylesheet">
+	<link href="../CSS/profil.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<title>Connexion | MyGamesDB</title>
 </head>
-
 <body>
 	<header>
 		<div class="header_bar">
@@ -78,24 +79,19 @@
 		</ul>
 	</nav>
 	<script src="../JS/menu.js"></script>
-	<p class="info_session">
-		<?php
-			if(isset($_SESSION['var_info'])){
-				echo($_SESSION['var_info']);
-				unset($_SESSION['var_info']);
-			}
-			
-			?>
-			
-		</p>	
-	<div class="last_game_added">
-		<p class="text"> Derniers jeux ajoutés</p>
-		<div class="all_games">
-			<?php 
-				show_last_game();
-			?>
-		</div>
+	<div class="account">
+		<p class="p_account"><span class="span_account">Mon Compte</span></p>
+		<p class="p_pseudo">
+			<span class="span_pseudo_title">Pseudo</span>
+			<span class="span_pseudo" onclick="document.location.href='change_pseudo.php'"><?php echo($_SESSION['pseudo'])?></span>
+		<p>
+		<p class="p_email">
+			<span class="span_email_title">Email</span>
+			<span class="span_email" onclick="document.location.href='change_email.php'"><?php echo($_SESSION['email'])?></span>
+		<p>
+		<p class="p_mdp">
+			<span class="span_mdp">Modifier mot de passe</span>
+		<p>
 	</div>
-	<footer></footer>
 </body>
 </html>
