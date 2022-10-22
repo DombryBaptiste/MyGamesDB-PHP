@@ -148,4 +148,53 @@
 			 }
 	}
 
+	function show_collection(){
+	if(isset($_SESSION['isconnected'])){
+			if($_SESSION['isconnected']){
+				global $host, $user, $password, $database;
+				$bdd = new PDO('mysql:host='.$host.';dbname='.$database.'',$user , $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+				$tab = create_tab_platform();
+				
+				$i = 0;
+				$pointeur = $tab[$i];
+				while($pointeur != "EOT"){
+					echo("<div class=\"game_by_platform\">");
+						$requete = $bdd->prepare("
+							SELECT *
+							FROM jeu 
+							INNER JOIN game_".$_SESSION['id']."membre ON jeu.id = game_22membre.id_game
+							WHERE platform ='".$pointeur."' 
+							ORDER BY nom");
+					$requete->execute();
+					if(($requete->rowCount()) != 0){
+						echo("<p class=\"first_letter_game\">".$pointeur."</p>");
+					}
+					while($info = $requete->fetch()){
+						echo("
+						<div class=\"list_game_bdd\">
+							<a href=\"game.php?id=".$info['id']."\"><img src=\"".$info['img']."\"/ class=\"pic\"></a>
+						</div>
+						");
+					}
+			$i++;
+			$pointeur = $tab[$i];
+			echo("</div>");
+		}
+			}
+		}
+	}
+
+	function create_tab_platform(){
+		global $host, $user, $password, $database;
+		$bdd = new PDO('mysql:host='.$host.';dbname='.$database.'',$user , $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+		$result = [];
+		$res = $bdd->prepare("SELECT platform FROM jeu GROUP BY platform");
+		$res->execute();
+		while($platform = $res->fetch(PDO::FETCH_ASSOC)){
+			array_push($result, $platform["platform"]);
+		}
+		array_push($result, "EOT");
+		return $result;
+	}
+
 ?>

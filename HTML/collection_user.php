@@ -1,22 +1,20 @@
-<?php 
+<?php
 	require_once("../PHP/log_bd.php");
 	require_once("../PHP/case_connexion.php");
 	require_once("../PHP/affiche_game.php");
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php title_game($_GET['id']); ?></title>
+	<title>MyGamesDB</title>
 	<link href="../CSS/style.css" rel="stylesheet">
 	<link href="../CSS/menu.css" rel="stylesheet">
 	<link href="../CSS/header.css" rel="stylesheet">
-	<link href="../CSS/game.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="../circle-progress-master/dist/circle-progress.min.js"></script>
 </head>
+
 <body>
 	<header>
 		<div class="header_bar">
@@ -80,26 +78,9 @@
 		</ul>
 	</nav>
 	<script src="../JS/menu.js"></script>
-	<div class="game">
-		<div class="desc">
-			<img src="<?php image_game($_GET['id'])?>" class="img_game">
-			<div class="desc_text">
-				<?php 
-				show_one_game($_GET['id']);
-				?>
-				<div class="button_info">
-					<?php
-						show_button($_GET['id']);
-					?>
-				</div>	
-			</div>
-		</div>
-		<div class="video">
-			<iframe width="560" height="315" src="<?php show_video($_GET['id']); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			<?php
-				show_progress($_GET['id']);
-     		?>
-	</div>
-
+	<?php
+		show_collection();
+	?>
+	<footer></footer>
 </body>
 </html>

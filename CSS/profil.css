@@ -52,3 +52,11 @@
 	display: flex;
 	flex-direction: column;
 }
+
+.mdp{
+	display: inline-flex;
+}
+
+.p_mdp{
+	margin-left: 10px;
+}

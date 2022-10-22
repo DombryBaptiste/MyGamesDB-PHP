@@ -1,7 +1,6 @@
-<?php 
+<?php
 	require_once("../PHP/log_bd.php");
-	require_once("../PHP/case_connexion.php");
-	require_once("../PHP/affiche_game.php");
+	require_once("../PHP/case_connexion.php")
 ?>
 
 <!DOCTYPE html>
@@ -9,13 +8,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php title_game($_GET['id']); ?></title>
 	<link href="../CSS/style.css" rel="stylesheet">
+	<link href="../CSS/connexion.css" rel="stylesheet">
 	<link href="../CSS/menu.css" rel="stylesheet">
 	<link href="../CSS/header.css" rel="stylesheet">
-	<link href="../CSS/game.css" rel="stylesheet">
+	<link href="../CSS/profil.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="../circle-progress-master/dist/circle-progress.min.js"></script>
+	<title>Connexion | MyGamesDB</title>
 </head>
 <body>
 	<header>
@@ -80,26 +79,29 @@
 		</ul>
 	</nav>
 	<script src="../JS/menu.js"></script>
-	<div class="game">
-		<div class="desc">
-			<img src="<?php image_game($_GET['id'])?>" class="img_game">
-			<div class="desc_text">
-				<?php 
-				show_one_game($_GET['id']);
-				?>
-				<div class="button_info">
-					<?php
-						show_button($_GET['id']);
-					?>
-				</div>	
-			</div>
-		</div>
-		<div class="video">
-			<iframe width="560" height="315" src="<?php show_video($_GET['id']); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			<?php
-				show_progress($_GET['id']);
-     		?>
+	<div class="account">
+		<p class="p_account"><span class="span_account">Changemnt de mot de passe</span></p>
+		<p class="p_pseudo">
+			<form method="GET" action="../PHP/mdp_user.php" class="form_new_pseudo">
+				<div class="mdp">
+					<p class="p_mdp">Ancien Mot de passe :</p>
+					<input  class="new_mdp_input" type="password" name="old_mdp">
+					<p class="p_mdp">Nouveau mot de passe :</p>
+					<input  class="new_mdp_input" type="password" name="new_mdp">
+					<p class="p_mdp"> Confirmer nouveau mot de passe :</p>
+					<input  class="new_mdp_input" type="password" name="new_mdp_confirm">
+				</div>
+				<input class="new_pseudo_input" type="submit" value ="Modifier" name="form_changemdp">
+			</form>
+		<p>
+			<p>
+			<?php 	if(isset($_SESSION['var_info'])){
+						echo($_SESSION['var_info']);
+						unset($_SESSION['var_info']);
+					}
+			?>
+				
+			</p>
 	</div>
-
 </body>
 </html>

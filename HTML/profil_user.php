@@ -90,7 +90,8 @@
 			<span class="span_email" onclick="document.location.href='change_email.php'"><?php echo($_SESSION['email'])?></span>
 		<p>
 		<p class="p_mdp">
-			<span class="span_mdp">Modifier mot de passe</span>
+			<span class="span_mdp" onclick="document.location.href='change_mdp.php'">Modifier mot de passe</span>
+			<span class="span_mdp" onclick="document.location.href='suppr_acc.php'">Suppression du compte</span>
 		<p>
 	</div>
 </body>
