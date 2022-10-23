@@ -109,7 +109,7 @@
 						<td>
 						</td>
 						<td>
-							<input type="submit" name="formconnect"value="Se connecter">
+							<input type="submit" name="formconnect" value="Se connecter">
 						</td>
 					</tr>
 				</table>

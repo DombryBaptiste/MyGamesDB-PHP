@@ -28,6 +28,12 @@
 .div_loupe{
 	margin-right: 50px;
 	margin-top: 7px;
+	margin-left: 10px;
+}
+.button_loupe{
+	background-color: rgb(89,104,177);
+	border: none;
+	margin-left: 3px;
 }
 .loupe {
 	height: 35px;
@@ -42,8 +48,17 @@
 	border: solid;
 	border-color: white;
 	display: inline-flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	
+}
+
+.form_recherche{
+	width: 100%;
+}
+
+.recherche_bar_loupe{
+	width : 100%;
+	display: inline-flex;
 }
 
 .connexion{

@@ -2,6 +2,7 @@
 	require_once("../PHP/log_bd.php");
 	require_once("../PHP/case_connexion.php");
 	require_once("../PHP/affiche_game.php");
+	require_once("../PHP/recherche_bdd.php");
 ?>
 
 <!DOCTYPE html>
@@ -89,18 +90,13 @@
 				echo($_SESSION['var_info']);
 				unset($_SESSION['var_info']);
 			}
+		?>
 			
-			?>
-			
-		</p>	
-	<div class="last_game_added">
-		<p class="text"> Derniers jeux ajoutés</p>
-		<div class="all_games">
-			<?php 
-				show_last_game();
-			?>
+		</p>
+		<p class="p_result_recherche">Résultat de la recherche : <?php echo("\"".$_GET['recherche']."\"")?></p>
+		<div>
+			<?php show_search() ?>
 		</div>
-	</div>
 	<footer></footer>
 </body>
 </html>

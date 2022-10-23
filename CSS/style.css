@@ -12,16 +12,30 @@ ul{
 
 
 footer{
+	margin-top: 30px;
 	height: 30px;
 	background-color: rgb(64, 80, 156);
 }
 .list_game_bdd{
 	
 }
-.pic{
-	height: 150px;
+.pic_normal{
+	height: 230px;
 	width: 150px;
 	margin: 5px 10px
+	
+}
+
+a{
+	display: inline-flex;
+}
+
+.pic_ds{
+	height: 150px;
+	width: 150px;
+	margin: 5px 10px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 .last_game_added{
 	width: 54%;
@@ -54,8 +68,21 @@ footer{
 	display: inline-flex;
 	width: 100%;
 }
+.game_by_platform{
+	display: inline-flex;
+	width: 100%;
+}
 
 .info_session{
 	text-align: center;
 	color: lightgoldenrodyellow;
+}
+
+.p_result_recherche{
+	text-align: center;
+	font-size: 30px;
+	color: white;
+	font-weight: bold;
+	border-bottom: solid gray;
+	padding-bottom: 5px;
 }

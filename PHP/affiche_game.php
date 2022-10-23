@@ -1,6 +1,14 @@
 <?php
 	require_once("../PHP/log_bd.php");
 
+	function getClass($platform){
+		if($platform == "Nintendo DS"){
+			return "class =\"pic_ds\"";
+		} else{
+			return "class =\"pic_normal\"";
+		}
+	}
+
 	function show_last_game(){
 		global $host, $user, $password, $database;
 		if(isset($_SESSION['isconnected'])){
@@ -15,7 +23,7 @@
 				$request->execute();
 				while($info = $request->fetch()) {
 					echo("
-						<a href=\"game.php?id=".$info['id_game']."\"><img src=\"".$info['img']."\"/ class=\"pic\"></a>
+						<a href=\"game.php?id=".$info['id_game']."\"><img src=\"".$info['img']."\"/".getClass($info['platform'])."></a>
 						");
 				}
 			}
@@ -39,7 +47,7 @@
 			while($info = $requete->fetch()){
 					echo("
 					<div class=\"list_game_bdd\">
-						<a href=\"game.php?id=".$info['id']."\"><img src=\"".$info['img']."\"/ class=\"pic\"></a>
+						<a href=\"game.php?id=".$info['id']."\"><img src=\"".$info['img']."\"/".getClass($info['platform'])."></a>
 					</div>
 					");
 			}
@@ -158,8 +166,7 @@
 				$i = 0;
 				$pointeur = $tab[$i];
 				while($pointeur != "EOT"){
-					echo("<div class=\"game_by_platform\">");
-						$requete = $bdd->prepare("
+					$requete = $bdd->prepare("
 							SELECT *
 							FROM jeu 
 							INNER JOIN game_".$_SESSION['id']."membre ON jeu.id = game_22membre.id_game
@@ -169,10 +176,13 @@
 					if(($requete->rowCount()) != 0){
 						echo("<p class=\"first_letter_game\">".$pointeur."</p>");
 					}
+					echo("<div class=\"game_by_platform\">");
+						
+
 					while($info = $requete->fetch()){
 						echo("
 						<div class=\"list_game_bdd\">
-							<a href=\"game.php?id=".$info['id']."\"><img src=\"".$info['img']."\"/ class=\"pic\"></a>
+							<a href=\"game.php?id=".$info['id']."\"><img src=\"".$info['img']."\"/".getClass($info['platform'])."></a>
 						</div>
 						");
 					}
